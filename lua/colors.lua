@@ -1,4 +1,4 @@
-local C = {}
+C = {}
 -- color palette from https://colorpalettes.net/color-palette-4524/
 
 C.blue = "Blue"
@@ -42,7 +42,9 @@ vim.api.nvim_exec(table.concat({
   string.format("hi StatuslineFile guibg=%s guifg=%s\n", C.primary, C.black),
   string.format("hi StatuslineFileCorner guifg=%s guibg=%s\n", C.primary, C.base),
   string.format("hi StatuslineBody guibg=%s guifg=%s\n", C.base, C.lightfont),
-  string.format("hi VertSplit	guifg=%s guibg=%s\n", C.secondary, C.darkfont),
-  string.format("hi ColorColumn  guibg=%s\n", C.backgroundlight)
+  string.format("hi VertSplit	guifg=%s guibg=%s\n", C.base, C.lightfont),
+  string.format("hi ColorColumn  guibg=%s\n", C.backgroundlight),
+  -- keybinding window
+  string.format("hi KeybindsMode guifg=%s guibg=%s\n", C.black, C.base),
 }), false)
 

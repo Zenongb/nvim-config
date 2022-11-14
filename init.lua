@@ -4,8 +4,10 @@ require("colors")
 require("config")
 require("mappings")
 require("statusline")
-require("diagnostics")
+require("diagnostic")
 
+require("work-modes")
+require("keymaps-win")
 
 -- config minimap.nvim
 local g = vim.g
@@ -25,7 +27,7 @@ require('nvim-terminal').setup({
         split = 'sp',
 
         -- Height of the terminal
-        height = 15,
+        height = 6,
     },
 
     -- keymap to disable all the default keymaps
@@ -40,14 +42,6 @@ require('nvim-terminal').setup({
     -- increase the window width by when you hit the keymap
     window_width_change_amount = 2,
 
-    terminals = {
-        -- keymaps to open nth terminal
-        {keymap = '<leader>1'},
-        {keymap = '<leader>2'},
-        {keymap = '<leader>3'},
-        {keymap = '<leader>4'},
-        {keymap = '<leader>5'},
-    }
 })
 
 
