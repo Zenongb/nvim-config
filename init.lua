@@ -98,19 +98,19 @@ cmp.setup({
       require'luasnip'.lsp_expand(args.body)
     end
   },
-      mapping = cmp.mapping.preset.insert({
-        -- edit mappings, some bugs found
-        ['<C-f>'] = cmp.mapping.select_next_item(),
-        ['<C-d>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<C-D>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-F>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      }),
-      sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = "luasnip" },
-      }),
+  mapping = cmp.mapping.preset.insert({
+    -- edit mappings, some bugs found
+    ['<C-f>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-D>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-F>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = "luasnip" },
+  }),
 })
 
 -- Setup cmp-nvim whithin lspconfig.

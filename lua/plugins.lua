@@ -23,13 +23,13 @@ require("packer").startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
   use {
-        "hrsh7th/nvim-cmp",
-        requires = {
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-nvim-lsp",
-            'quangnguyen30192/cmp-nvim-ultisnips',
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip"
-        }
+    "hrsh7th/nvim-cmp",
+    requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-nvim-lsp",
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip"
     }
+  }
 end)
