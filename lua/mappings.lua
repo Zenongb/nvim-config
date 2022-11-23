@@ -2,6 +2,7 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+keymap("n", "M", "m", opts)
 -- nvim-terminal commands
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 -- keymap("t", "<C-t>", ':lua NTGlobal["terminal"]:toggle()<cr>', opts)
