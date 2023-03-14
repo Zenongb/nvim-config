@@ -44,10 +44,13 @@ require('nvim-terminal').setup({
 
 })
 
+require'telescope'.setup {}
+
+
 
 -- add treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "go", "lua", "javascript", "bash", "html", "css" },
+  ensure_installed = { "python", "go", "lua", "javascript", "bash", "html", "css" },
   auto_install = true,
   highlight = {
     enable = true,
@@ -113,18 +116,22 @@ cmp.setup({
   }),
 })
 
+
+
 -- Setup cmp-nvim whithin lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 --Enable (broadcasting) snippet capability for completion
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.cssls.setup {
+local lspconfig = require'lspconfig'
+
+lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
 -- add lua syntax highlighting
-require'lspconfig'.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -146,10 +153,11 @@ require'lspconfig'.sumneko_lua.setup {
 
 
 -- add golang syntax highlight
-require'lspconfig'.gopls.setup {
+lspconfig.gopls.setup {
   capabilities = capabilities,
   cmd = {"gopls", "serve"},
   filetypes = {"go", "gomod"},
+  root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
   settings = {
     gopls = {
       analyses = {
@@ -161,8 +169,44 @@ require'lspconfig'.gopls.setup {
 }
 
 -- add ts-js-tsx lsp
-require'lspconfig'.tsserver.setup {
+lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
 
 
+lspconfig.pylsp.setup{
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391', 'E741'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
+
+lspconfig.rust_analyzer.setup{
+  capabilities = capabilities,
+  filetypes = { "rust", "rs"},
+  settings = {
+      ["rust-analyzer"] = {
+          imports = {
+              granularity = {
+                  group = "module",
+              },
+              prefix = "self",
+          },
+          cargo = {
+              buildScripts = {
+                  enable = true,
+              },
+          },
+          procMacro = {
+              enable = true
+          },
+      }
+  }
+}

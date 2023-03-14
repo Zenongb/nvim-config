@@ -2,7 +2,7 @@ local border_color = 'Pmenu'
 vim.diagnostic.config({
   virtual_text = false,
   float = {
-    scope = 'cursor',
+    scope = 'line',
     header = 'Diagnostic:',
     border = {
       { "╔" , border_color },

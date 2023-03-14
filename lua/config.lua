@@ -30,9 +30,8 @@ o.tabstop = 2
 
 function Tablength()
   local ft = vim.b.filetype
-  print(ft)
   local length = 2
-  if ft == "javascript" or ft == "python"  then
+  if ft == "python"  then
     length = 4
   end
   bo.tabstop = length
@@ -43,21 +42,6 @@ vim.api.nvim_exec(
 [[
   augroup Tablength
     au!
-    au BufAdd * call v:lua.Tablength()
+    au BufAdd, BufEnter * call v:lua.Tablength()
   augroup END
 ]], false)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

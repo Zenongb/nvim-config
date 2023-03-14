@@ -2,6 +2,10 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+--telescope open
+keymap("n", "ff", ":Telescope live_grep<CR>", opts)
+keymap("n", "fF", ":Telescope find_files<CR>", opts)
+
 -- marks commands
 keymap("n", "M", "m", opts)
 keymap("n", "B", "''", opts)
